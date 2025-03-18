@@ -7,34 +7,6 @@
     <link rel="stylesheet" href="style.css">
     <script defer src="script.js"></script>
 </head>
-<div class="character-creation" style="display: none;">
-    <h2>Stwórz swoją postać</h2>
-    <label>Imię:</label>
-    <input type="text" id="charName">
-    
-    <label>Klasa postaci:</label>
-    <select id="charClass">
-        <option value="Fixer">Fixer</option>
-        <option value="Solo">Solo</option>
-        <option value="Netrunner">Netrunner</option>
-        <option value="Tech">Tech</option>
-        <option value="Nomad">Nomad</option>
-    </select>
-
-    <h3>Statystyki</h3>
-    <p>INT: <span id="statINT">5</span></p>
-    <p>REF: <span id="statREF">5</span></p>
-    <p>DEX: <span id="statDEX">5</span></p>
-    <p>TECH: <span id="statTECH">5</span></p>
-    <p>COOL: <span id="statCOOL">5</span></p>
-    <p>LUCK: <span id="statLUCK">5</span></p>
-    <p>BODY: <span id="statBODY">5</span></p>
-    <p>EMP: <span id="statEMP">5</span></p>
-    <p>MOVE: <span id="statMOVE">5</span></p>
-
-    <button onclick="randomizeStats()">Losuj statystyki</button>
-    <button onclick="saveCharacter()">Zapisz postać</button>
-</div>
 <body>
     <div class="menu">
         <h1>Cyberpunk RPG</h1>
@@ -43,9 +15,34 @@
         <button onclick="loadGame()">Wczytaj Grę</button>
         <button onclick="showSettings()">Ustawienia</button>
     </div>
-    <div class="game-screen" style="display: none;">
-        <p id="storyText"></p>
-        <div id="choices"></div>
+
+    <div class="character-creation" style="display: none;">
+        <h2>Stwórz swoją postać</h2>
+        <label>Imię:</label>
+        <input type="text" id="charName">
+        
+        <label>Klasa postaci:</label>
+        <select id="charClass">
+            <option value="Fixer">Fixer</option>
+            <option value="Solo">Solo</option>
+            <option value="Netrunner">Netrunner</option>
+            <option value="Tech">Tech</option>
+            <option value="Nomad">Nomad</option>
+        </select>
+
+        <h3>Statystyki</h3>
+        <p>INT: <span id="statINT">5</span></p>
+        <p>REF: <span id="statREF">5</span></p>
+        <p>DEX: <span id="statDEX">5</span></p>
+        <p>TECH: <span id="statTECH">5</span></p>
+        <p>COOL: <span id="statCOOL">5</span></p>
+        <p>LUCK: <span id="statLUCK">5</span></p>
+        <p>BODY: <span id="statBODY">5</span></p>
+        <p>EMP: <span id="statEMP">5</span></p>
+        <p>MOVE: <span id="statMOVE">5</span></p>
+
+        <button onclick="randomizeStats()">Losuj statystyki</button>
+        <button onclick="saveCharacter()">Zapisz postać</button>
     </div>
 </body>
 </html>
