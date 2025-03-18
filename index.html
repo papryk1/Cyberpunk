@@ -22,7 +22,7 @@
         <input type="text" id="charName">
         
         <label>Klasa postaci:</label>
-        <select id="charClass">
+        <select id="charClass" onchange="updateClassInfo()">
             <option value="Fixer">Fixer</option>
             <option value="Solo">Solo</option>
             <option value="Netrunner">Netrunner</option>
@@ -30,18 +30,24 @@
             <option value="Nomad">Nomad</option>
         </select>
 
-        <h3>Statystyki</h3>
-        <p>INT: <span id="statINT">5</span></p>
-        <p>REF: <span id="statREF">5</span></p>
-        <p>DEX: <span id="statDEX">5</span></p>
-        <p>TECH: <span id="statTECH">5</span></p>
-        <p>COOL: <span id="statCOOL">5</span></p>
-        <p>LUCK: <span id="statLUCK">5</span></p>
-        <p>BODY: <span id="statBODY">5</span></p>
-        <p>EMP: <span id="statEMP">5</span></p>
-        <p>MOVE: <span id="statMOVE">5</span></p>
+        <div id="classInfo">
+            <img id="classImage" src="images/Fixer.png" alt="Postać Fixer">
+            <p id="classDescription">Fixer to pośrednik w świecie przestępczym. Zna odpowiednich ludzi, załatwia rzeczy poza prawem i jest mistrzem negocjacji.</p>
+        </div>
 
-        <button onclick="randomizeStats()">Losuj statystyki</button>
+        <h3>Rozdziel statystyki (20 punktów do rozdania)</h3>
+        <p>INT: <button onclick="changeStat('INT', -1)">-</button> <span id="statINT">5</span> <button onclick="changeStat('INT', 1)">+</button></p>
+        <p>REF: <button onclick="changeStat('REF', -1)">-</button> <span id="statREF">5</span> <button onclick="changeStat('REF', 1)">+</button></p>
+        <p>DEX: <button onclick="changeStat('DEX', -1)">-</button> <span id="statDEX">5</span> <button onclick="changeStat('DEX', 1)">+</button></p>
+        <p>TECH: <button onclick="changeStat('TECH', -1)">-</button> <span id="statTECH">5</span> <button onclick="changeStat('TECH', 1)">+</button></p>
+        <p>COOL: <button onclick="changeStat('COOL', -1)">-</button> <span id="statCOOL">5</span> <button onclick="changeStat('COOL', 1)">+</button></p>
+        <p>LUCK: <button onclick="changeStat('LUCK', -1)">-</button> <span id="statLUCK">5</span> <button onclick="changeStat('LUCK', 1)">+</button></p>
+        <p>BODY: <button onclick="changeStat('BODY', -1)">-</button> <span id="statBODY">5</span> <button onclick="changeStat('BODY', 1)">+</button></p>
+        <p>EMP: <button onclick="changeStat('EMP', -1)">-</button> <span id="statEMP">5</span> <button onclick="changeStat('EMP', 1)">+</button></p>
+        <p>MOVE: <button onclick="changeStat('MOVE', -1)">-</button> <span id="statMOVE">5</span> <button onclick="changeStat('MOVE', 1)">+</button></p>
+
+        <p>Punkty do rozdania: <span id="pointsLeft">20</span></p>
+
         <button onclick="saveCharacter()">Zapisz postać</button>
     </div>
 </body>
