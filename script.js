@@ -1,4 +1,4 @@
-const player = {
+const defaultPlayer = {
     health: 100,
     attackPower: 10,
     defense: 5,
@@ -6,21 +6,29 @@ const player = {
     location: "start"
 };
 
+let player = { ...defaultPlayer };
+
 const enemy = {
     health: 50,
     attackPower: 8,
     defense: 3
 };
 
+function resetGame() {
+    localStorage.removeItem("playerData"); 
+    player = { ...defaultPlayer }; 
+    startGame();
+}
+
 function startGame() {
     document.querySelector('.menu').style.display = 'none';
-    document.querySelector('.game-screen').style.display = 'block';
+    document.querySelector('.game-screen').style.display = 'flex';
     loadStory(player.location);
 }
 
 function startCombat() {
     document.querySelector('.game-screen').style.display = 'none';
-    document.querySelector('.combat-screen').style.display = 'block';
+    document.querySelector('.combat-screen').style.display = 'flex';
     document.getElementById("combat-log").innerText = "Spotkałeś przeciwnika!";
 }
 
@@ -40,7 +48,7 @@ function attack() {
         player.location = "victory";
         saveGame();
         document.querySelector('.combat-screen').style.display = 'none';
-        document.querySelector('.game-screen').style.display = 'block';
+        document.querySelector('.game-screen').style.display = 'flex';
         loadStory("victory");
     } else if (player.health <= 0) {
         document.getElementById("combat-log").innerText += "\nZginąłeś!";
@@ -55,7 +63,7 @@ function saveGame() {
 function loadGame() {
     let savedData = localStorage.getItem("playerData");
     if (savedData) {
-        Object.assign(player, JSON.parse(savedData));
+        player = JSON.parse(savedData);
         startGame();
         alert("Gra wczytana!");
     } else {
