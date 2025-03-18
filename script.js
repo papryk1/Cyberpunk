@@ -1,58 +1,47 @@
-let pointsLeft = 20;
-
-const classDescriptions = {
-    "Fixer": "Fixer to pośrednik w świecie przestępczym. Zna odpowiednich ludzi, załatwia rzeczy poza prawem i jest mistrzem negocjacji.",
-    "Solo": "Solo to elitarny najemnik, specjalista od walki i ochrony. Doskonałe umiejętności bojowe i szybkie refleksy czynią go niebezpiecznym przeciwnikiem.",
-    "Netrunner": "Netrunner to haker, który włamać się może do każdego systemu. Korzysta z cyberprzestrzeni do zdobywania informacji i hakowania wrogów.",
-    "Tech": "Tech to specjalista od napraw, modyfikacji i technologii. Potrafi budować i ulepszać broń oraz cyberwszczepy.",
-    "Nomad": "Nomad to członek wędrownych klanów, żyjący poza miastem. Ma doskonałe umiejętności przetrwania i znajomość pojazdów."
+const story = {
+    "start": {
+        "text": "Jest noc w Night City. Siedzisz w ciemnym barze, gdy nagle podchodzi do ciebie tajemniczy Fixer.",
+        "choices": [
+            { "text": "Posłuchaj, co ma do powiedzenia", "next": "fixer_talk" },
+            { "text": "Zignoruj go i wyjdź", "next": "leave_bar" }
+        ]
+    },
+    "fixer_talk": {
+        "text": "Fixer mówi: 'Mam dla ciebie zlecenie. Ktoś zginął w dziwnych okolicznościach. Potrzebuję kogoś z twoimi umiejętnościami.'",
+        "choices": [
+            { "text": "Przyjąć zlecenie", "next": "accept_mission" },
+            { "text": "Odmówić", "next": "decline_mission" }
+        ]
+    },
+    "leave_bar": {
+        "text": "Wychodzisz na neonową ulicę Night City. Może to był błąd?",
+        "choices": []
+    },
+    "accept_mission": {
+        "text": "Fixer uśmiecha się i podaje ci plik z informacjami. Czas zacząć śledztwo.",
+        "choices": []
+    },
+    "decline_mission": {
+        "text": "Fixer wzrusza ramionami. 'Twoja strata.' Odchodzi, zostawiając cię samemu sobie.",
+        "choices": []
+    }
 };
 
-function startCharacterCreation() {
+function startGame() {
     document.querySelector('.menu').style.display = 'none';
-    document.querySelector('.character-creation').style.display = 'block';
-    updateClassInfo();
+    document.querySelector('.game-screen').style.display = 'block';
+    loadStory("start");
 }
 
-function changeStat(stat, change) {
-    let statElement = document.getElementById("stat" + stat);
-    let currentValue = parseInt(statElement.innerText);
-    if (change > 0 && pointsLeft > 0) {
-        statElement.innerText = currentValue + 1;
-        pointsLeft--;
-    } else if (change < 0 && currentValue > 1) {
-        statElement.innerText = currentValue - 1;
-        pointsLeft++;
-    }
-    document.getElementById("pointsLeft").innerText = pointsLeft;
-}
-
-function updateClassInfo() {
-    let selectedClass = document.getElementById("charClass").value;
-    document.getElementById("classDescription").innerText = classDescriptions[selectedClass];
-    document.getElementById("classImage").src = "images/" + selectedClass + ".png";
-}
-
-function saveCharacter() {
-    if (pointsLeft > 0) {
-        alert("Musisz rozdać wszystkie punkty przed zapisaniem postaci!");
-        return;
-    }
-
-    let character = {
-        name: document.getElementById("charName").value,
-        class: document.getElementById("charClass").value,
-        stats: {
-            INT: parseInt(document.getElementById("statINT").innerText),
-            REF: parseInt(document.getElementById("statREF").innerText),
-            DEX: parseInt(document.getElementById("statDEX").innerText),
-            TECH: parseInt(document.getElementById("statTECH").innerText),
-            COOL: parseInt(document.getElementById("statCOOL").innerText),
-            LUCK: parseInt(document.getElementById("statLUCK").innerText)
-        }
-    };
-
-    localStorage.setItem("character", JSON.stringify(character));
-    alert("Postać zapisana!");
-    startGame();
+function loadStory(scene) {
+    document.getElementById("story-text").innerText = story[scene].text;
+    let choicesDiv = document.getElementById("choices");
+    choicesDiv.innerHTML = "";
+    
+    story[scene].choices.forEach(choice => {
+        let button = document.createElement("button");
+        button.innerText = choice.text;
+        button.onclick = () => loadStory(choice.next);
+        choicesDiv.appendChild(button);
+    });
 }

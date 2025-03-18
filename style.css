@@ -32,17 +32,6 @@ button {
     cursor: pointer;
     font-size: 1.2em;
 }
-.character-creation {
+.game-screen {
     padding: 20px;
-}
-.char-container {
-    display: flex;
-    justify-content: center;
-    align-items: center;
-}
-.char-info {
-    margin-right: 20px;
-}
-.char-stats {
-    margin-left: 20px;
 }
