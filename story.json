@@ -1,0 +1,16 @@
+{
+    "start": {
+        "text": "Stoisz w neonowym zaułku Night City. Twoje zadanie: znaleźć zabójcę Ivy Vance.",
+        "choices": [
+            { "text": "Przejdź do baru", "next": "bar" },
+            { "text": "Zbadaj zaułek", "next": "alley" }
+        ]
+    },
+    "bar": {
+        "text": "Wchodzisz do baru, barman patrzy na ciebie podejrzliwie.",
+        "choices": [
+            { "text": "Zapytać o Ivy", "next": "ivy_info" },
+            { "text": "Kupić drinka", "next": "drink" }
+        ]
+    }
+}

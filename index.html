@@ -1,0 +1,22 @@
+<!DOCTYPE html>
+<html lang="pl">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Cyberpunk RPG</title>
+    <link rel="stylesheet" href="style.css">
+    <script defer src="script.js"></script>
+</head>
+<body>
+    <div class="menu">
+        <h1>Cyberpunk RPG</h1>
+        <button onclick="startGame()">Nowa Gra</button>
+        <button onclick="loadGame()">Wczytaj Grę</button>
+        <button onclick="showSettings()">Ustawienia</button>
+    </div>
+    <div class="game-screen" style="display: none;">
+        <p id="storyText"></p>
+        <div id="choices"></div>
+    </div>
+</body>
+</html>
