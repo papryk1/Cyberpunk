@@ -22,6 +22,16 @@
     <div class="game-screen" style="display: none;">
         <h2 id="story-text">Witaj w Night City...</h2>
         <div id="choices"></div>
+        <button onclick="saveGame()">Zapisz grę</button>
+    </div>
+
+    <div class="combat-screen" style="display: none;">
+        <h2>Walka!</h2>
+        <p id="combat-log">Spotkałeś przeciwnika!</p>
+        <button onclick="attack()">Atak</button>
+        <button onclick="defend()">Obrona</button>
+        <button onclick="hack()">Hakowanie</button>
+        <button onclick="saveGame()">Zapisz grę</button>
     </div>
 </body>
 </html>
