@@ -48,10 +48,7 @@ function saveCharacter() {
             DEX: parseInt(document.getElementById("statDEX").innerText),
             TECH: parseInt(document.getElementById("statTECH").innerText),
             COOL: parseInt(document.getElementById("statCOOL").innerText),
-            LUCK: parseInt(document.getElementById("statLUCK").innerText),
-            BODY: parseInt(document.getElementById("statBODY").innerText),
-            EMP: parseInt(document.getElementById("statEMP").innerText),
-            MOVE: parseInt(document.getElementById("statMOVE").innerText)
+            LUCK: parseInt(document.getElementById("statLUCK").innerText)
         }
     };
 
