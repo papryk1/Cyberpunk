@@ -1,4 +1,6 @@
 const defaultPlayer = {
+    name: "",
+    class: "",
     health: 100,
     attackPower: 10,
     defense: 5,
@@ -14,14 +16,28 @@ const enemy = {
     defense: 3
 };
 
-function resetGame() {
-    localStorage.removeItem("playerData"); 
-    player = { ...defaultPlayer }; 
+function startCharacterCreation() {
+    document.querySelector('.menu').style.display = 'none';
+    document.querySelector('.character-creation').style.display = 'flex';
+}
+
+function saveCharacter() {
+    player.name = document.getElementById("charName").value;
+    player.class = document.getElementById("charClass").value;
+    localStorage.setItem("playerData", JSON.stringify(player));
+    alert("Postać zapisana!");
     startGame();
+}
+
+function resetGame() {
+    localStorage.removeItem("playerData");
+    player = { ...defaultPlayer };
+    startCharacterCreation();
 }
 
 function startGame() {
     document.querySelector('.menu').style.display = 'none';
+    document.querySelector('.character-creation').style.display = 'none';
     document.querySelector('.game-screen').style.display = 'flex';
     loadStory(player.location);
 }
